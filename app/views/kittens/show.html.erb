@@ -1,3 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
 <h1> Show Kitten </h1>
 
-<% render @kitten %>
+Name: <%= @kitten.name %> <br>
+Age: <%= @kitten.age %> <br>
+Cuteness: <%= @kitten.cuteness %> <br>
+Softness: <%= @kitten.softness %> <br>
+
+<%= link_to 'Edit Kitten', edit_kitten_path %> <br> <br>
+<%= button_to 'Delete Kitten', @kitten, method: :delete  %> <br><br>
+<%= link_to 'index', root_path %>

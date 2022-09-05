@@ -3,9 +3,18 @@ class KittensController < ApplicationController
 
   def index
     @kittens = Kitten.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @kittens }
+    end
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @kitten }
+    end
+  end
 
   def new
     @kitten = Kitten.new
@@ -14,10 +23,12 @@ class KittensController < ApplicationController
   def create
     @kitten = Kitten.new(kitten_params)
 
-    if @kitten.save
-      render :show, status: :created
-    else
-      render :new, status: :unprocessable_entitiy
+    respond_to do |format|
+      if @kitten.save
+        format.html { redirect_to kitten_url(@kitten), notice: 'Kitten was successfully created.' }
+      else
+        format.html { render :new, status: unprocessable_entitiy }
+      end
     end
   end
 
@@ -47,6 +58,6 @@ class KittensController < ApplicationController
   end
 
   def kitten_params
-    params.permit(:name, :age, :cuteness, :softness)
+    params.require(:kitten).permit(:name, :age, :cuteness, :softness)
   end
 end

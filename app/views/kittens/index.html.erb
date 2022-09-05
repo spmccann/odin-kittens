@@ -1,5 +1,13 @@
+<p style="color: green"><%= notice %></p>
 <h1> All Kittens </h1>
 
+<%= link_to 'new kitten', new_kitten_path %> <br>
+
 <% @kittens.each do |kitten| %>
-  <% render kitten %>
+  <br> Name: <%= kitten.name %> <br>
+  Age: <%= kitten.age %> <br>
+  Cuteness: <%= kitten.cuteness %> <br>
+  Softness: <%= kitten.softness %> <br>
+  <%= button_to 'Delete Kitten', @kitten, method: :delete  %> <br>
+  <%= link_to 'Show Kitten', kitten  %> <br>
 <% end %>

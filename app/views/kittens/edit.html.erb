@@ -1,1 +1,6 @@
 <h1> Edit Kitten </h1>
+
+<%= render 'form', kitten: @kitten %> <br>
+<%= button_to 'Delete Kitten', @kitten, method: :delete  %> <br><br>
+<%= link_to "Show Kitten", @kitten %> <br>
+<%= link_to "Index", root_path %>
